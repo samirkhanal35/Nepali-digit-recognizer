@@ -3,10 +3,12 @@ def recognize(img):
 	import os
 	import tensorflow as tf
 	from tensorflow import keras
+
 	import cv2
 	import glob
 	import math
 	import os
+	import unicode as un
 	#import image
 	#from IPython import display
 	from matplotlib import cm
@@ -18,7 +20,7 @@ def recognize(img):
 	from sklearn import metrics
 	from tensorflow.python.data import Dataset
 	tf.logging.set_verbosity(tf.logging.ERROR)
-	
+	c = []
 	def create_model():
 		model = tf.keras.models.Sequential([
 		 keras.layers.Dense(1024, activation=tf.nn.relu, input_shape=(1024,)),
@@ -59,4 +61,7 @@ def recognize(img):
 	df=pd.DataFrame(np.array(img1),columns=[i for i in range(1,1025)])
 	
 	classes = model.predict_classes(df)
-	print (classes[0])
+	c.append(un.unicode(classes))
+
+
+	print(c)
