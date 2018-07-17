@@ -4,6 +4,7 @@ def segFun(heighty,widthx,img):
     import cv2 as cv
     import gary_convert as gc
     import binarize as br
+    import recognition as rg
 
     i=0
     flag_dot=0
@@ -100,7 +101,8 @@ def segFun(heighty,widthx,img):
                                 img[v_i-1,j_right,0]=0
 
                     #newly added
-                    '''hs=i_nlow-i_nhigh
+
+                    hs=i_nlow-i_nhigh
                     ws=j_right-j_left
                     img1 = np.zeros((hs,ws,3), np.uint8)
                     img1[:] = (255, 255, 255)
@@ -109,8 +111,11 @@ def segFun(heighty,widthx,img):
                             img1[i_s,j_s]=img[i_nhigh + i_s , j_left + j_s]
                     cv.imshow("demos(%d)"%iscount,img1)
                     img1=cv.resize(img1,(32,32),interpolation = cv.INTER_CUBIC)
-                    cv.imwrite("extracts/name"+str(iscount)+".jpg",img1)
-                    iscount=iscount+1'''
+                    rg.recognize(img1)
+
+
+
+
                     #********
                     j_right=0
                     j_left=0

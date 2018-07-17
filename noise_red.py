@@ -3,6 +3,7 @@ def noisered(heighty,widthx,img):
     import math
     import numpy as np
 
+
     a=0
     b=0
     for h in range(1,heighty-1):   

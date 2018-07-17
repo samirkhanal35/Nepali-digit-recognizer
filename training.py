@@ -68,13 +68,13 @@ test_labels, test_images = parse_labels_and_features(test_dataset[:15000])
 def create_model():
   model = tf.keras.models.Sequential([
     keras.layers.Dense(1024, activation=tf.nn.relu, input_shape=(1024,)),
-    keras.layers.Dropout(0.2),
+    #keras.layers.Dropout(0.2),
     keras.layers.Dense(512, activation=tf.nn.relu),
-    keras.layers.Dense(512, activation=tf.nn.relu),
+    keras.layers.Dense(100, activation=tf.nn.relu),
     keras.layers.Dense(10, activation=tf.nn.softmax)
   ])
   
-  model.compile(optimizer=tf.keras.optimizers.Adam(), 
+  model.compile(optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.01),
                 loss=tf.keras.losses.sparse_categorical_crossentropy,
                 metrics=['accuracy'])
   
@@ -82,20 +82,22 @@ def create_model():
 
 
 # Create a basic model instance
-model = create_model()
-model.summary()
+
 
 checkpoint_path = "training_1/cp.ckpt"
 checkpoint_dir = os.path.dirname(checkpoint_path)
+
+model = create_model()
+model.load_weights(checkpoint_path)
 
 # Create checkpoint callback
 cp_callback = tf.keras.callbacks.ModelCheckpoint(checkpoint_path, 
                                                  save_weights_only=True,
                                                  verbose=1)
 
-model = create_model()
+#model = create_model()
 
-model.fit(train_images, train_labels, batch_size=50, epochs = 100, 
+model.fit(train_images, train_labels, batch_size=32, epochs = 5,
           validation_data = (test_images,test_labels),
           callbacks = [cp_callback])  # pass callback to training
           
