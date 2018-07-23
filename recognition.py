@@ -60,7 +60,9 @@ def recognize(img):
 	df=pd.DataFrame(np.array(img1),columns=[i for i in range(1,1025)])
 	
 	classes = model.predict_classes(df)
-	c.append(un.unicode(classes))
+	#c.append(un.unicode(classes))
+	c = un.unicode(classes)
+	return (c)
 
 
-	print(c)
+	#print(c)

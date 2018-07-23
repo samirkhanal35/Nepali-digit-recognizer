@@ -6,6 +6,8 @@ def segFun(heighty,widthx,img):
     import binarize as br
     import recognition as rg
 
+    c=[]
+
     i=0
     flag_dot=0
     flag_dots=0
@@ -111,7 +113,7 @@ def segFun(heighty,widthx,img):
                             img1[i_s,j_s]=img[i_nhigh + i_s , j_left + j_s]
                     cv.imshow("demos(%d)"%iscount,img1)
                     img1=cv.resize(img1,(32,32),interpolation = cv.INTER_CUBIC)
-                    rg.recognize(img1)
+                    c.append(rg.recognize(img1))
 
 
 
@@ -123,5 +125,6 @@ def segFun(heighty,widthx,img):
             i_high=0
             i_low=0
         i=i+1
-        
+
+    return (c)
 

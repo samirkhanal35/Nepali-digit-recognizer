@@ -7,6 +7,8 @@ def main(img,heighty,widthx,ch):
     import gaussfun as gau
     import segment as sg
 
+    c=[]
+
     print(ch)
     #cv2.imshow("demo1",img)
     gc.gray_con(heighty,widthx,img)
@@ -17,6 +19,6 @@ def main(img,heighty,widthx,ch):
     print("Blurred")
     br.bin_(heighty,widthx,img)
     print("Binarized")
-    sg.segFun(heighty,widthx,img)
-    print("Segmented")
-    cv2.imshow("demo2",img)
+    c=sg.segFun(heighty,widthx,img)
+    print(c)
+    return (c)
