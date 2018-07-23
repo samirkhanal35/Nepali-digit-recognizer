@@ -9,8 +9,8 @@ top = tk.Tk()
 top.title("Nepali Digit Recognizer")
 top.geometry("600x600")
 #top.iconbitmap(r'npc_win.ico')
-#img2 =ImageTk.PhotoImage(file='npc_win.ico')
-#top.tk.call('wm', 'iconphoto', top._w, img2)
+img2 =ImageTk.PhotoImage(file='npc_win.ico')
+top.tk.call('wm', 'iconphoto', top._w, img2)
 top.resizable(0,0)
 #***********************************************************
 class variables():
