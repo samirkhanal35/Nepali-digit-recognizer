@@ -8,7 +8,7 @@ top = tk.Tk()
 top.title("Nepali Digit Recognizer")
 a=[]
 top.geometry("600x700")
-#top.iconbitmap(r'npc_win.ico')
+top.iconbitmap(r'npc_win.ico')
 top.resizable(0,0)
 #***********************************************************
 class variables:
