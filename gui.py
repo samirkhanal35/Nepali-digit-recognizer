@@ -89,7 +89,10 @@ def call_main():
         cv2.imshow("call_main",variables.img)
         a=main(variables.img,variables.heighty,variables.widthx,variables.ch)
         variables.output_txt.insert(tk.END, a)
+
+
 #***********************************************************        
+
 def resize_img(img,widthx,heighty):
     th=heighty
     tw=widthx
