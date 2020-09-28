@@ -23,18 +23,18 @@ Gr=0.21*R+0.72*G+0.07*B<br/><br/>
 
 Algorithm:<br/>
 Step 1: Read an RBG image with its height and width also.<br/>
-Step 2: For any pixel, read the intensity values of Red, Blue and Green channels
-
-as R, B and G respectively.<br/>
+Step 2: For any pixel, read the intensity values of Red, Blue and Green channels as R, B and G respectively.<br/>
 
 Step 3: Calculate the gray value, Gr = 0.21*R+0.72*G+0.07*B<br/>
 Step 4: Set, R=B=G=GR<br/>
 Step 5: Repeat steps from 2 to 4 until all pixels are scanned<br/><br/>
+
 Since the OCR application potentially needs to handle the images of old and distorted
 image documents, there is a big likelihood of the presence of noise in images. We have
 used the median filtering, spatial filtering and gaussian filtering methods for removing
 the noise, basically the salt and pepper noise, in real scanned and microfilmed image
 documents.<br/><br/>
+
 Median filtering:<br/>
 It is done by calculating the median of certain window including odd number of pixels
 and putting the median value to central pixel of that window. This noise reduction
@@ -43,14 +43,10 @@ this method we have taken 3x3 window.<br/><br/>
 
 Algorithm:<br/>
 Step 1: Read gray image with its height and width.<br/>
-Step 2: For any 3x3 pixel window, read gray values of all pixels and calculate
-
-the median.<br/>
-
-
+Step 2: For any 3x3 pixel window, read gray values of all pixels and calculate the median.<br/>
 Step 3: For a window, Central_pixel_value= median_value, go to next pixel window.<br/>
-
 Step 4: Repeat steps 2 to 3 until all pixels are scanned.<br/>
+
 *For those pixels in a window that actually don’t exist or lie out of the image, pixel
 values of their adjacent boundary pixels are taken.<br/><br/>
 
@@ -61,39 +57,27 @@ Gaussian blur is based on the normal distribution of intensity of a pixel in the
 2D-plane. The 2D-gaussian function for calculation of weight of pixels in a window is
 given by,<br/>
 
-G(x,y)=
-1
-2πσ2
-e
--(x
-2+y
-2
-) 2σ
-2 ⁄
+![gaussian blur formula](https://github.com/samirkhanal35/Nepali-digit-recognizer/blob/master/gaussian_blur_formula.png)
+
 <br/><br/>
 Where, x and y as (x,y) represent the pixel vector in a window and σ is the standard
 deviation of the normal distribution which is determined by using value of radius r
 using the relation,<br/><br/>
 
-r=σ√2*log(255)-1<br/><br/>
+![radius formula](https://github.com/samirkhanal35/Nepali-digit-recognizer/blob/master/gaussian_blur_radius.png)
+<br/><br/>
 
 We have used Gaussian blur for 5x5 window i.e. radius r=3, which results the standard
 deviation to be σ ≈ 1.823.<br/><br/>
 
 Algorithm:<br/>
 Step 1: Read gray image (after median filter) with its height and width.<br/>
-Step 2: For any 5x5 window, calculate weights of all pixels using formula of
-
-equation (3-2).<br/>
+Step 2: For any 5x5 window, calculate weights of all pixels using formula given above.<br/>
 
 Step 3: Calculate products of pixel values and their respective weights.<br/>
-Step 4: Calculate sum of all products and set Central_pixel_value=sum, go to
-
-next pixel window.<br/>
-
-
-
+Step 4: Calculate sum of all products and set Central_pixel_value=sum, go to next pixel window.<br/>
 Step 5: Repeat steps 2 to 4 until all pixels are scanned.<br/>
+
 (*For those pixels in a window that actually don’t exist or lie out of the image, pixel
 values of their adjacent boundary pixels are taken.)<br/><br/>
 
@@ -122,7 +106,7 @@ exceeding the threshold will indicate the presence of a character line otherwise
 white space or the separation. The spacing between lines are made constant for all other
 lines.<br/>
 In this project for segmentation, binary image is taken as input. Instead of using
-constant line spacing, a flag has been used to indicate the presence or absence of line.<br/>
+constant line spacing, a flag has been used to indicate the presence or absence of line.<br/><br/>
 
 
 Similar method has been used for character detection with some alteration. For line
@@ -155,6 +139,38 @@ and the value to be predicted.<br/><br/>
 
 # Installation and Execution
 
-Please run the file gui.py to run the program
+To Install(Please search and follow installation according to your operating system):<br /><br />
 
-# Usage
+<b>Prerequisites:</b><br />
+
+Python<br />
+For linux users: sudo apt-get install python3<br />
+Then install pip: apt install python3-pip<br />
+For other users, you can follow <a href="https://www.python.org/downloads/">this</a> link.<br /><br />
+
+OpenCV<br />
+For linux users: pip install opencv-python<br /><br /><br />
+
+Tensorflow<br />
+Follow <a href="https://www.tensorflow.org/install/pip">this</a> link.<br /><br />
+
+Keras<br />
+For linux users: pip install Keras<br /><br />
+
+Image<br />
+For linux users: pip install image<br /><br />
+
+Numpy<br />
+Follow <a href="https://numpy.org/install/">this</a> link.<br /><br />
+
+Pandas<br />
+Follow <a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html">this</a> link.<br /><br />
+
+Tkinter<br />
+For linux users: sudo apt-get install python3-tk<br /><br />
+
+For installation guides and problems you can go to their respective wesites.<br />
+
+After installation of <b>Prerequisites</b> , you can clone or download the repo and run gui.py file to run the program.<br />
+
+
