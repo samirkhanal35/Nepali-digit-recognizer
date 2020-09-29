@@ -133,9 +133,9 @@ and the value to be predicted.<br/><br/>
 ![Digit recognizer process](https://github.com/samirkhanal35/Nepali-digit-recognizer/blob/master/minor_project_process.png)
 
 
-# Visuals
+# Output
 
-![Digit recognizer](https://github.com/samirkhanal35/Nepali-digit-recognizer/blob/master/digit_recognizer.png)
+![Digit recognizer output](https://github.com/samirkhanal35/Nepali-digit-recognizer/blob/master/digit_recognizer.png)
 
 # Installation and Execution
 
